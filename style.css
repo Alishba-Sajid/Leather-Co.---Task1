@@ -1343,3 +1343,69 @@ html {
   scroll-behavior: smooth;
 }
 
+.as-seen-in {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #fff;
+}
+
+.as-seen-in h2 {
+  font-size: 30px;
+  margin-bottom: 38px;
+  color: #3b3b3b;
+}
+
+.logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 100px;
+}
+
+.logos img {
+  max-height: 40px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+
+  
+}
+
+.logos img:hover {
+  filter: none;
+}
+
+.test-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 100px;
+  padding: 60px 10px;
+  background-color: #fff;
+  flex-wrap: wrap;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.test {
+  width: 500px; /* wider divs like your image */
+  overflow-x: auto; /* allow scroll if needed */
+}
+
+.test p {
+  font-size: 20px;  /* bigger text */
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 25px;
+  color: #000;
+
+}
+  
+.test img {
+  max-height: 50px;
+  display: block;
+  margin: 0 auto;
+  filter: grayscale(100%);
+}
