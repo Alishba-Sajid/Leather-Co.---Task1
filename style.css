@@ -1390,8 +1390,8 @@ html {
 }
 
 .test {
-  width: 500px; /* wider divs like your image */
-  overflow-x: auto; /* allow scroll if needed */
+  width: 500px; 
+  overflow-x: auto; 
 }
 
 .test p {
