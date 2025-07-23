@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
 window.addEventListener("DOMContentLoaded", () => {
   // Search overlay
   const searchIcon = document.querySelector(".modal__toggle-open");
@@ -166,5 +167,122 @@ window.addEventListener("DOMContentLoaded", () => {
     cartDrawer?.classList.remove("open");
     cartBackdrop?.classList.remove("active");
   });
+
+  // ✅ Testimonial dot navigation
+ const tests = document.querySelectorAll('.test');
+  const dots = document.querySelectorAll('.dot');
+  let activeIndex = 0;
+
+  function showTest(index) {
+    tests.forEach((test, i) => {
+      test.classList.toggle('active', i === index);
+      dots[i].classList.toggle('active', i === index);
+    });
+    activeIndex = index;
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      showTest(index);
+    });
+  });
+
+  function handleResize() {
+    if (window.innerWidth <= 768) {
+      showTest(activeIndex); // Show one
+    } else {
+      tests.forEach(test => test.classList.add('active')); // Show all
+      dots.forEach(dot => dot.classList.remove('active'));
+    }
+  }
+
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('DOMContentLoaded', handleResize);
+
+
+
+// ✅ Review dot navigation
+const testimonialCards = document.querySelectorAll('.testimonial-card');
+const testimonialDots = document.querySelectorAll('.testimonial-dots .dot');
+
+function showTestimonial(index) {
+  const card = testimonialCards[index];
+  card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+
+  testimonialDots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+}
+
+testimonialDots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    showTestimonial(index);
+  });
 });
 
+// Optional: on load, highlight first dot
+window.addEventListener('DOMContentLoaded', () => {
+  testimonialDots[0]?.classList.add('active');
+});
+
+// ------------------ MOBILE MENU LOGIC ------------------
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+const closeBtn = document.getElementById("closeMobileMenu");
+const overlay = document.getElementById("mobileOverlay");
+
+// Open Menu
+hamburger.addEventListener("click", () => {
+  mobileMenu.classList.add("active");
+  overlay.classList.add("active");
+  document.body.classList.add("no-scroll"); // Disable scroll
+});
+
+// Close Menu
+const closeMobileMenu = () => {
+  mobileMenu.classList.remove("active");
+  overlay.classList.remove("active");
+  document.body.classList.remove("no-scroll"); // Re-enable scroll
+};
+
+closeBtn.addEventListener("click", closeMobileMenu);
+overlay.addEventListener("click", closeMobileMenu);
+
+// Close menu if screen is resized to desktop
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 1024) {
+    closeMobileMenu();
+  }
+});
+
+// ------------------ DROPDOWN TOGGLE LOGIC ------------------
+
+function setupMobileDropdown(toggleId, dropdownId) {
+  const toggle = document.getElementById(toggleId);
+  const dropdown = document.getElementById(dropdownId);
+  const arrow = toggle.querySelector(".mobile-arrow");
+
+  toggle.addEventListener("click", () => {
+    const isOpen = dropdown.classList.contains("active");
+
+    // Toggle visibility
+    dropdown.classList.toggle("active");
+    dropdown.hidden = isOpen;
+
+    // Toggle arrow icon
+    arrow.textContent = isOpen ? "˅" : "×";
+
+    // Update ARIA
+    toggle.setAttribute("aria-expanded", !isOpen);
+  });
+}
+
+
+// Setup dropdowns
+setupMobileDropdown("mobileDropdownToggleWork", "mobileDropdownWork");
+setupMobileDropdown("mobileDropdownToggleTravel", "mobileDropdownTravel");
+setupMobileDropdown("mobileDropdownToggleAccessories", "mobileDropdownAccessories");
+
+
+  
+});

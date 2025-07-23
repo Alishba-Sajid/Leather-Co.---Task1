@@ -12,8 +12,7 @@ body {
   background: #fff;
 }
 
-
-/* Top Promo Banner */
+/* ✅ Top Banner*/
 .top-banner-link {
   text-decoration: none;
   display: block;             
@@ -64,8 +63,15 @@ body {
 .promo-link:hover::after {
   width: 100%;
 }
+@media (max-width: 768px) {
+  .top-banner {
+    font-size: 13px; 
+    padding: 8px 10px; 
+  }
+}
+/* ✅ Top Banner End/
 
-/* Header Styles */
+/* ✅ Header*/
 .main-header {
   background: #fff;
   border-bottom: 1px solid #eee;
@@ -155,22 +161,434 @@ body {
   cursor: pointer;
 }
 
-/* Trust Bar */
+/* ✅ Header End */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #000;
+  border-radius: 2px;
+}
+
+
+.mobile-menu {
+  position: fixed;
+  top: 111px; 
+  left: -435px;
+  width: 435px;
+  height: calc(100% - 111px);
+  background: #fff;
+  padding: 25px 20px;
+  z-index: 9999;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  box-shadow: none;
+}
+
+
+/* Open State */
+.mobile-menu.active {
+  left: 0;
+}
+
+/* Close Button */
+.mobile-menu .close-btn {
+  font-size: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+/* ✅ SEARCH BAR */
+.mobile-search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 6px 10px;
+  margin-bottom: 30px;
+}
+
+.mobile-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-icon {
+  color: #555;
+  font-size: 14px;
+}
+
+/* ✅ NAVIGATION STYLING */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top-level Links */
+
+/* Remove arrow from <summary> in some browsers */
+.mobile-nav summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Submenu List */
+.mobile-nav details ul {
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mobile-nav details li a {
+  font-size: 14px;
+  color: #444;
+  text-decoration: none;
+  padding: 8px 0;
+  display: block;
+}
+
+/* Hover */
+
+/* Overlay */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 125px; /* same as your header height */
+  left: 0;
+  height: calc(100% - 125px); /* exclude top area from blur */
+  width: 100vw;
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.6); /* optional dimming */
+  z-index: 9989;
+}
+
+.mobile-overlay.active {
+  display: block;
+}
+
+.desktop-only {
+  display: block;
+}
+
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh; /* prevent scroll bounce on iOS */
+}
+.mobile-dropdown {
+  position: relative;
+  margin-bottom: 15px;
+  width: 100%;
+}
+.mobile-nav a,
+.mobile-dropdown-toggle {
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  color: #161616;
+  cursor: pointer;
+  padding: 12px 4px;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;            
+  text-decoration: none;        
+  margin-bottom: 10px;
+}
+
+.mobile-dropdown-toggle:focus {
+  outline: none;
+}
+
+.mobile-arrow {
+  font-size: 14px;
+  margin-left: 10px;
+  transition: transform 0.2s ease;
+}
+
+.mobile-dropdown.open > .mobile-dropdown-toggle .mobile-arrow {
+  transform: rotate(180deg);
+}
+/* Container that slides open */
+.mobile-dropdown-box {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
+  background-color: #fff;
+  color: #000;
+  border-top: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+/* When active */
+.mobile-dropdown-box.active {
+  opacity: 1;
+  max-height: 1200px; /* big enough for content; adjust as needed */
+}
+
+/* Remove default hidden attr in JS; this is fallback */
+.mobile-dropdown-box[hidden] {
+  display: block; /* we control visibility via max-height */
+}
+
+
+/* Inner wrapper */
+.mobile-dropdown-inner {
+  padding: 20px 10px;
+  box-sizing: border-box;
+}
+
+/* Image section */
+.mobile-dropdown-image-wrapper {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mobile-dropdown-image {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.mobile-dropdown-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+    transition: transform 0.4s ease; 
+}
+
+.mobile-dropdown-image:hover img {
+  transform: scale(1.08); 
+}
+
+.mobile-dropdown-image p {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 0;
+}
+
+.mobile-dropdown-divider {
+  width: 100%;
+  max-width: 280px;
+  margin: 20px auto 0;
+  border: none;
+  border-top: 1px solid #4b4a4a;
+}
+
+/* Columns (stacked on mobile) */
+.mobile-dropdown-columns-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.mobile-dropdown-column {
+  width: 100%;
+  border-top: 1px solid #222222;
+  padding-top: 15px;
+}
+
+.mobile-dropdown-column:first-child {
+  border-top: none;
+}
+
+.mobile-dropdown-column h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000;
+  text-align: left;
+}
+
+.mobile-dropdown-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+    color: #000;
+  
+
+}
+
+.mobile-dropdown-column ul li {
+  margin-bottom: 8px;
+    color: #000;
+}
+
+.mobile-dropdown-column ul li a {
+  color: #000000;
+   text-decoration: none !important; /* prevent underline */
+  font-size: 12px;
+  font-weight: 200;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.mobile-dropdown-column ul li a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+/* Rotate arrow when open */
+.mobile-dropdown.open > .mobile-dropdown-toggle .mobile-arrow {
+  transform: rotate(180deg);
+}
+
+
+/* Media Query for Mobile */
+@media (max-width: 1024px) {
+  .nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+   .desktop-only {
+    display: none;
+  }
+
+ .logo img {
+    max-width: 290px; /* or whatever size looks balanced */
+  }
+
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    padding: 6px 0; /* reduce top/bottom space */
+    height: 60px;    /* adjust height if necessary */
+  }
+
+  .header-container {
+    height: 60px;  /* shrink container height */
+    padding: 0 15px; /* slightly less side padding */
+  }
+
+  .logo img {
+    max-width: 270px;  /* scale logo down */
+  }
+
+  
+
+  .hamburger span {
+    width: 20px;
+    height: 2px;
+  }
+
+  .header-icons i,
+  .icon-cart-empty,
+  .icon-search {
+    font-size: 16px; /* reduce icon sizes slightly */
+  }
+  .mobile-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.mobile-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.mobile-topbar .mobile-search {
+  flex: 1;
+  margin-bottom: 0; /* remove existing margin */
+}
+
+.mobile-topbar .close-btn {
+  font-size: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0 5px;
+  margin: 0;
+  line-height: 1;
+}
+
+
+}
+
+
+
+/* ✅ Trust Bar*/
 .trust-bar {
-  background:#f1f0f0;
+  background: #f1f0f0;
   text-align: center;
   padding: 9px 0;
   font-size: 14px;
   display: flex;
   justify-content: space-around;
- 
   font-weight: 550;
 }
 
 .trust-bar span {
   color: #222;
-
 }
+
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+  .trust-bar {
+    justify-content: center;
+    font-size: 12px;
+    padding: 10px 20px;
+    gap: 0; /* Remove extra space */
+  }
+
+  .trust-bar > span {
+    display: none;
+    font-size: 12px; /* Force same size */
+  }
+
+  .trust-bar > span:first-child,
+  .trust-bar > span:last-child {
+    display: inline;
+    font-size: 12px; /* Match font size */
+  }
+
+  .trust-bar > span:first-child::after {
+    content: " | ";
+    padding: 0 4px; /* Less gap */
+    color: #222;
+  }
+
+  .trust-bar .reviews {
+    display: none;
+  }
+
+  .trust-bar .rating {
+    display: inline;
+    font-size: 12px; /* Ensure same */
+  }
+}
+
+
+/* ✅ End*/
 
 /* Icons */
 .header-icons {
@@ -211,7 +629,8 @@ body {
   transform: scale(1.2);
 }
 
-/* Product Section Styling */
+
+/* ✅ Bags*/
 .bags-section {
   display: flex;
   flex-wrap: wrap;
@@ -248,20 +667,52 @@ body {
   text-align: left;
   color: #333;
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .bags-section {
+    gap: 20px;
+    padding: 50px 2%;
+  }
 
-/* Tablet: 2 per row */
-@media (max-width: 900px) {
   .bag-card {
-    flex: 0 1 calc(50% - 24px);
+    flex: 0 1 calc(50% - 20px);
+    border-radius: 14px;
+  }
+
+  .bag-card img {
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .bag-label {
+    padding: 14px;
+    font-size: 18px;
   }
 }
 
-/* Mobile: 1 per row */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .bags-section {
+    gap: 16px;
+    padding: 40px 3%;
+  }
+
   .bag-card {
-    flex: 0 1 100%;
+    flex: 0 1 calc(50% - 16px); /* still 2 per row on mobile */
+    border-radius: 12px;
+  }
+
+  .bag-card img {
+height: 250px;
+  }
+
+  .bag-label {
+    padding: 12px;
+    font-size: 16px;
   }
 }
+
+/* ✅ Bags Section End */
 
 
 .view-all-container {
@@ -284,7 +735,7 @@ body {
 
 }
 
-
+/* ✅ Product Section */
 .product-section {
   display: flex;
   flex-wrap: wrap;
@@ -346,131 +797,21 @@ body {
 }
 
 
-
-
 .variants img {
   width: 40px;
   height: 40px;
   object-fit: cover;
   border: none;
   outline: none;
-  cursor: pointer;
   transition: border 0.2s ease;
+   position: relative;
+  cursor: pointer;
 }
 
 .variants img.active {
   border: 1px solid black;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .product-card {
-    flex: 0 1 calc(50% - 24px);
-  }
-}
-
-@media (max-width: 600px) {
-  .product-card {
-    flex: 0 1 100%;
-  }
-}
-
-.product-card h3 {
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-.product-card h3.hovered {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-/* review section */
-.testimonial-wrapper {
-  padding: 80px 5px;
-  position: relative;
- 
-}
-
-.testimonial-section {
-  display: flex;
-  flex-wrap: nowrap;         
-  gap: 10px;
-  max-width: 100vw;         
-  overflow-x: auto;     
-  padding-bottom: 20px;     
-  justify-content: center; 
- 
-}
-
-.testimonial-card {
-  width: 432px;
-  border-radius: 25px;
-  overflow: hidden;
-  color: #fff;
-  text-align: center;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  background: #000; 
-  background-size: cover;    
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 520px;
-  position: relative; 
-}
-
-.testimonial-img {
-  width: 100%;
-  height: 220px;       
-  object-fit: contain;     
-  display: block;
-  background: #fff;        
-}
-
-.testimonial-content {
-  padding: 30px 25px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.stars {
-  font-size: 22px;
-  margin-bottom: 20px;
-  margin-top: 65px;
-}
-
-.quote {
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  flex-grow: 1;
-}
-
-.name-image {
-  width: 140px;
-  max-width: 100%; 
-  height: auto;
-  margin: 0 auto 12px auto;
-  display: block;
-  margin-bottom: 150px;
-  size: 4px;
-}
-
-.location {
-   position: absolute;
-  bottom: 163px; 
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 15px;
-  color: #ddd;
-  margin: 0;
-  
-
-}
 .jdgm-star::before {
   content: "★"; 
   color: black;
@@ -500,10 +841,206 @@ body {
   content: "☆"; 
 }
 
-.variants img {
-  position: relative;
-  cursor: pointer;
+
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .product-section {
+    gap: 20px;
+    padding: 50px 2%;
+  }
+
+  .product-card {
+    flex: 0 1 calc(50% - 20px);
+    border-radius: 14px;
+  }
+
+  .product-card img {
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .product-info h3 {
+    font-size: 18px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .variants {
+    gap: 6px;
+  }
+
+  .variants img {
+    width: 36px;
+    height: 36px;
+  }
 }
+
+@media (max-width: 768px) {
+  .product-section {
+    gap: 16px;
+    padding: 40px 3%;
+  }
+
+  .product-card {
+    flex: 0 1 calc(50% - 16px); /* two per row */
+    border-radius: 12px;
+  }
+
+  .product-card img {
+    height: 250px;
+  }
+
+  .product-info h3 {
+    font-size: 16px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .variants {
+    gap: 5px;
+    margin-top: 6px;
+  }
+
+  .variants img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* ✅ Product Section End */
+
+/* ✅ Review Section */
+/* ====== BASE (desktop) STYLES ====== */
+
+.testimonial-wrapper {
+  padding: 80px 5px;
+  position: relative;
+}
+
+.testimonial-section {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  max-width: 100vw;
+  overflow: hidden; /* hidden on desktop */
+  padding-bottom: 20px;
+  justify-content: center;
+}
+
+/* Hide dots by default (desktop) */
+.testimonial-dots {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #636262;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #333;
+}
+
+.testimonial-card {
+  width: 432px;
+  border-radius: 25px;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 520px;
+}
+
+.testimonial-content {
+  padding: 30px 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stars {
+  font-size: 22px;
+  margin-bottom: 20px;
+  margin-top: 65px;
+}
+
+.quote {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.name-image {
+  width: 140px;
+  height: auto;
+  margin: 0 auto 150px auto;
+  display: block;
+}
+
+.location {
+  position: absolute;
+  bottom: 163px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 15px;
+  color: #ddd;
+  margin: 0;
+}
+
+
+/* ====== MOBILE STYLES ====== */
+@media (max-width: 1024px) {
+  .testimonial-section {
+    flex-direction: row;              /* horizontal */
+    overflow-x: auto;                 /* allow horizontal scroll */
+    scroll-snap-type: x mandatory;   /* snap behavior */
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding-bottom: 12px;
+    justify-content: flex-start;
+     scrollbar-width: none;            /* Firefox */
+  -ms-overflow-style: none;  
+    
+  }
+  
+.testimonial-section::-webkit-scrollbar {
+  display: none;                    /* Chrome, Safari */
+}
+
+  .testimonial-card {
+    display: flex !important;       /* show all cards */
+    scroll-snap-align: center;      /* snap each card */
+    margin-right: 16px;
+  }
+
+  .testimonial-dots {
+    display: flex;
+  }
+}
+/* ✅ Review Section End */
 
 /* Tooltip styles */
 .tooltip {
@@ -522,7 +1059,8 @@ body {
   opacity: 0;
 }
 
-/* shop best seller */
+
+/* ✅ Best Seller */
 .shopbestseller {
   display: flex;
   justify-content: center;
@@ -586,10 +1124,64 @@ body {
   width: 400px; 
 }
 
+h1 {
+  text-align: center;
+  font-size: 2;
+  font-weight: 650;
+  margin-bottom: 1.5rem;
+}
 
-/* 
-read our story */
+@media (max-width: 768px) {
+  .shopbestseller {
+    flex-direction: column;
+    min-height: auto;
+    width: 90%;              /* Adds side spacing */
+    margin: 0 auto;          /* Centers the section */
+  }
 
+  .shopbestseller-image {
+    flex: none;
+    width: 100%;
+    order: -1; /* Optional: move image on top of text */
+  }
+
+  .shopbestseller-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .shopbestseller-content {
+    flex: none;
+    width: 100%;
+    padding: 1.5rem;
+    text-align: left;
+  }
+
+  .shopbestseller-content h1 {
+    font-size: 1.5rem;
+    text-align: left;
+  }
+
+  .shopbestseller-content p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .cta-button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
+}
+
+
+/* ✅ End */
+
+
+/* ✅ Read Our Story */
 .read-our-story {
   display: flex;
   background-color: #f3f3f3;
@@ -651,22 +1243,59 @@ read our story */
   display: inline-block;
   text-align: center;
   width: 400px;
-  transition: background-color 0.3s ease;
+
 }
 
-.read-story-button:hover {
-  background-color: #1f0d08;
+@media (max-width: 768px) {
+  .read-our-story {
+    flex-direction: column;
+    min-height: auto;
+    width: 90%;             
+    margin: 0 auto;          
+  }
+
+  .read-our-story-image {
+    flex: none;
+    width: 100%;
+  }
+
+  .read-our-story-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .read-our-story-content {
+    flex: none;
+    width: 100%;
+    padding: 1.5rem;
+    text-align: left;        
+  }
+
+  .read-our-story-content h1 {
+    font-size: 1.5rem; 
+    text-align: left;      
+  }
+
+  .read-our-story-content p {
+    font-size: 0.85rem;      
+    line-height: 1.6;
+  }
+
+  .read-story-button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
 }
-
-h1 {
-  text-align: center;
-  font-size: 2;
-  font-weight: 650;
-  margin-bottom: 1.5rem;
-}
+/* ✅ End */
 
 
 
+
+/* ✅ Faq Section */
 .faq-section {
     width: 90%;
   max-width: 1030px;
@@ -750,6 +1379,9 @@ faq-link {
   text-decoration: underline;
   font-weight: 500;
 }
+/* ✅ End */
+
+
 /* ✅ Search bar hidden by default */
 .search-overlay {
   display: none;
@@ -951,7 +1583,7 @@ faq-link {
 
 
 
-/* footer */
+/* ✅ Footer*/
 .footer {
   background-color: #000;
   color: #fff;
@@ -992,28 +1624,19 @@ faq-link {
   display: flex;
   align-items: flex-start;
   padding: 10px 10px;
+  justify-content: space-between;
   flex-wrap: wrap;
   
 }
-/* Left logo */
-.footer-logo {
-  flex: 0 0 auto;
 
-   padding-right: 400px;
-}
+
 
 .footer-logo img {
    width: 60px;
   height: auto;
 }
 
-/* Centered links */
-.footer-center {
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
- 
-}
+
 
 .footer-links {
    display: flex;
@@ -1024,12 +1647,7 @@ faq-link {
   flex: 1;
  
 }
-.footer-middle > .footer-center + .footer-center {
-  margin-left: -100px; 
-}
-.footer-middle > .footer-center:last-of-type {
-  margin-left: -100px; 
-}
+
 
 .footer-column h3 {
   font-size: 16px;
@@ -1343,69 +1961,231 @@ html {
   scroll-behavior: smooth;
 }
 
-.as-seen-in {
-  text-align: center;
-  padding: 50px 20px;
-  background-color: #fff;
+
+.footer-section {
+  flex: 1 1 250px; /* allows wrapping on smaller screens */
+  min-width: 200px;
 }
 
+/* Stack on mobile */
+@media (max-width: 768px) {
+  .footer-middle {
+    flex-direction: column;
+    align-items: flex-start;
+       gap: 10px;
+  }
+
+  .footer-section {
+    width: 100%;
+      
+  }
+
+  .footer-logo {
+    display: flex;
+    justify-content: center; /* ✅ Center logo horizontally */
+    margin-bottom: 5px;
+  }
+
+  .footer-column {
+    margin-bottom: 30px;
+  }
+   
+
+.footer-policies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  .footer-policies a {
+    text-align: center;
+    flex-basis: 30%; 
+  }
+
+  .footer-policies a:nth-child(n+4) {
+    flex-basis: 45%; /
+  }
+
+
+
+.footer-center.footer-shop {
+  margin-top: 0; 
+  padding-top: 0;
+}
+
+  .footer a,
+  .footer a:link,
+  .footer a:visited,
+  .footer a:hover,
+  .footer a:active,
+  .footer ul li a {
+    text-decoration: none !important;
+  }
+
+
+}
+
+@media (min-width: 769px) {
+  .footer-middle > .footer-center + .footer-center {
+    margin-left: -100px;
+  }
+
+  .footer-middle > .footer-center:last-of-type {
+    margin-left: -100px;
+  }
+
+  
+}
+
+/* ✅ As Seen In */
+.as-seen-in {
+  text-align: center;
+  padding: 18px 10px;
+  background-color: #fff;
+}
 .as-seen-in h2 {
   font-size: 30px;
   margin-bottom: 38px;
+    padding: 3px 3px; 
   color: #3b3b3b;
 }
+
 
 .logos {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowwrap;         
   gap: 100px;
 }
 
 .logos img {
-  max-height: 40px;
+  max-height: clamp(60px, 8vw, 80px);    
+  max-width: clamp(100px, 12vw, 160px);   
   object-fit: contain;
   filter: grayscale(100%);
   transition: filter 0.3s ease;
-
-  
+  flex: 0 0 auto;
 }
 
 .logos img:hover {
   filter: none;
 }
+@media (max-width: 1024px) {
+  .as-seen-in .logos {
+    flex-wrap: wrap;                    
+    gap: 40px;
+  }
 
+  .as-seen-in .logos img {
+    flex: 0 1 calc(50% - 40px);            
+    max-width: calc(50% - 40px);
+  }
+
+  .as-seen-in .logos img:nth-child(5) {
+    display: none;                          
+  }
+}
+
+/* ✅ End */
+
+
+/* ✅ Test Section */
+.test-section-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 60px 10px;
+  text-align: center;
+}
+
+/* Default (desktop view) */
 .test-section {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 100px;
-  padding: 60px 10px;
-  background-color: #fff;
   flex-wrap: wrap;
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .test {
-  width: 500px; 
-  overflow-x: auto; 
+  width: 500px;
+  display: block;
 }
 
+
 .test p {
-  font-size: 20px;  /* bigger text */
+  font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
   margin-bottom: 25px;
   color: #000;
-
 }
-  
+
 .test img {
   max-height: 50px;
   display: block;
   margin: 0 auto;
   filter: grayscale(100%);
 }
+
+/* Dots */
+.dots {
+  display: none;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 6px;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.dot.active {
+  opacity: 1;
+}
+
+/* Mobile view */
+@media (min-width: 769px) {
+  .test-section {
+    flex-wrap: nowrap;
+    overflow-x: hidden; /* hides scroll bar on desktop */
+  }
+
+  .dots {
+    display: none; /* hide dots on desktop */
+  }
+}
+
+/* Mobile: scrollable with dots */
+@media (max-width: 768px) {
+  .test-section {
+    flex-wrap: nowrap;
+    overflow-x: hidden; /* Disable scroll */
+    position: relative;
+  }
+
+  .test {
+    display: none;
+    flex: 0 0 100%;
+  }
+
+  .test.active {
+    display: block;
+  }
+
+  .dots {
+    display: flex;
+  }
+}
+
+
+/* ✅ End */
